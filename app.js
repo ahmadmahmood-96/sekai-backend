@@ -38,7 +38,7 @@ connect();
 
 // Routes
 app.use("/auth", authRoutes);
-app.use("/user", verifyToken, userRoutes);
+app.use("/user123", verifyToken, userRoutes);
 
 // Server Listening
 app.listen(port, () => {
