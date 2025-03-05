@@ -1,3 +1,4 @@
+const user = require("../models/user");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 
@@ -37,6 +38,23 @@ exports.addUser = async (req, res) => {
     console.log(error);
     res.status(500).json({
       message: "An error occurred while signing up",
+    });
+  }
+};
+
+// view all users
+exports.getUsers = async (req, res) => {
+  try {
+    const users = await User.find().select("_id name email phone_number role");
+
+    res.status(200).json({
+      message: "Users retrieved successfully",
+      users,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "An error has occurred",
     });
   }
 };
