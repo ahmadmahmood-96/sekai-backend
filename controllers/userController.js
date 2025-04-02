@@ -1,3 +1,4 @@
+const { query } = require("express");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 
@@ -54,6 +55,37 @@ exports.getUsers = async (req, res) => {
     console.error(error);
     res.status(500).json({
       message: "An error has occurred",
+    });
+  }
+};
+
+exports.getUser = async (req, res) => {
+  try {
+    // check if query paramters exsists
+    const id = req.params.id;
+    console.log(id);
+    if (!id) {
+      return res.status(400).json({
+        message: "Please provde user id",
+      });
+    }
+
+    const user = await User.findOne(id);
+
+    if (!user) {
+      return res.status(400).json({
+        message: "User not found",
+      });
+    }
+
+    res.status(200).json({
+      message: "User found",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      message: "an error has occured while retrieving the user",
     });
   }
 };
