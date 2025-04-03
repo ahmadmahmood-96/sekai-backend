@@ -1,6 +1,4 @@
-const { query } = require("express");
 const Company = require("../models/company");
-const bcrypt = require("bcryptjs");
 
 exports.getCompanies = async (req, res) => {
   try {

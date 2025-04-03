@@ -4,7 +4,9 @@ const app = express();
 const port = process.env.PORT;
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { connect } = require("./config");
+const {
+  connect
+} = require("./config");
 
 // Importing Routes
 const authRoutes = require("./routes/auth");
