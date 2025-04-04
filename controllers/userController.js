@@ -1,11 +1,18 @@
-const { query } = require("express");
+const {
+  query
+} = require("express");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 
 exports.addUser = async (req, res) => {
   try {
-    console.log(req.user);
-    const { name, email, phone_number, password, role } = req.body;
+    const {
+      name,
+      email,
+      phone_number,
+      password,
+      role
+    } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({
