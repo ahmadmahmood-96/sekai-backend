@@ -5,8 +5,7 @@ exports.getCompanies = async (req, res) => {
     const companies = await Company.find().select("_id name");
 
     res.status(200).json({
-      message: "Companies retrieved successfully",
-      companies,
+      companies
     });
   } catch (error) {
     console.error(error);
