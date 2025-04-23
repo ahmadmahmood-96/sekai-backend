@@ -9,12 +9,10 @@ const insuranceAgentSchema = new mongoose.Schema(
     },
     phoneNumber: {
       type: String,
-      required: [true, "Phone number is required"],
       trim: true,
     },
     email: {
       type: String,
-      required: [true, "Email is required"],
       trim: true,
       lowercase: true,
       match: [

@@ -4,14 +4,13 @@ const app = express();
 const port = process.env.PORT;
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const {
-  connect
-} = require("./config");
+const { connect } = require("./config");
 
 // Importing Routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const companyRoutes = require("./routes/company");
+const carRoutes = require("./routes/car");
 
 // Importing Verifying Token Middleware
 const verifyToken = require("./middleware/verify");
@@ -43,6 +42,7 @@ connect();
 app.use("/auth", authRoutes);
 app.use("/user", verifyToken, userRoutes);
 app.use("/company", verifyToken, companyRoutes);
+app.use("/cars", verifyToken, carRoutes);
 
 // Server Listening
 app.listen(port, () => {
