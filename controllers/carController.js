@@ -20,18 +20,20 @@ exports.getAllCars = async (req, res) => {
 // Get car by id
 exports.getCar = async (req, res) => {
   try {
-    const cars = await Car.findById(req.params.id);
+    const { id } = req.params;
 
-    if (!car) {
+    if (!id) {
       return res.status(400).json({
         status: "fail",
-        message: "Car not found with that ID",
+        message: "ID is required",
       });
     }
 
+    const car = await Car.findById(id);
+
     res.status(200).json({
       status: "success",
-      message: "Cars successfully retrieved",
+      message: "Car successfully retrieved",
       result: car,
     });
   } catch (error) {
