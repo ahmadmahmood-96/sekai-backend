@@ -9,6 +9,6 @@ router.post("/cars", carController.createCar);
 router.get("/cars", carController.getAllCars);
 
 // For viewing car with given ID
-router.get("/cars:id", carController.getCar);
+router.get("/car:id", carController.getCar);
 
 module.exports = router;
