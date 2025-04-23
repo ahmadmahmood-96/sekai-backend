@@ -22,7 +22,6 @@ const carSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Manufacturing year is required"],
       min: [1900, "Year must be 1900 or later"],
-      max: [new Date().getFullYear() + 1, "Year cannot be in the future"],
     },
     engineCapacity: {
       type: String,
