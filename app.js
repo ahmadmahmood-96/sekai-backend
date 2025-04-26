@@ -12,10 +12,12 @@ const userRoutes = require("./routes/user");
 const companyRoutes = require("./routes/company");
 const carRoutes = require("./routes/car");
 const insuranceCompanyRoutes = require("./routes/insuranceCompany");
+const insuranceAgentRoutes = require("./routes/insuranceAgent");
 
 // Importing Verifying Token Middleware
 const verifyToken = require("./middleware/verify");
 const { verify } = require("jsonwebtoken");
+const insuranceAgent = require("./models/insuranceAgent");
 
 // Middleware
 app.use(
@@ -45,7 +47,8 @@ app.use("/auth", authRoutes);
 app.use("/user", verifyToken, userRoutes);
 app.use("/company", verifyToken, companyRoutes);
 app.use("/cars", verifyToken, carRoutes);
-app.use("/insuranceCompany", verifyToken, insuranceCompanyRoutes);
+app.use("/icomp", verifyToken, insuranceCompanyRoutes);
+app.use("/agent", verifyToken, insuranceAgentRoutes);
 
 // Server Listening
 app.listen(port, () => {
