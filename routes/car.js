@@ -11,4 +11,10 @@ router.get("/all-cars", carController.getAllCars);
 // For viewing car with given ID
 router.get("/car/:id", carController.getCar);
 
+// For updating car with given ID
+router.patch("/car/:id", carController.updateCar);
+
+// For deleting car with given ID
+router.delete("/car/:id", carController.deleteCar);
+
 module.exports = router;
