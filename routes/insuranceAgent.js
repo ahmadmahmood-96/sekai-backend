@@ -3,7 +3,7 @@ const agentController = require("../controllers/insuranceAgentController");
 const router = express.Router();
 
 // For adding insurance agents
-router.post("/agents", agentController.createAgent);
+router.post("/agent", agentController.createAgent);
 
 // For viewing all insurance agents
 router.get("/all-agents", agentController.getAllAgents);
