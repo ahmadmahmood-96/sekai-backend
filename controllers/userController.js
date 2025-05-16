@@ -1,10 +1,18 @@
-const { query } = require("express");
+const {
+  query
+} = require("express");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 
 exports.addUser = async (req, res) => {
   try {
-    const { name, email, phone_number, password, role } = req.body;
+    const {
+      name,
+      email,
+      phone_number,
+      password,
+      role
+    } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({
@@ -44,7 +52,7 @@ exports.addUser = async (req, res) => {
 // view all users
 exports.getUsers = async (req, res) => {
   try {
-    const users = await User.find().select("_id name email phone_number role");
+    const users = await User.find().select("_id name email phone_number role createdAt");
 
     res.status(200).json({
       message: "Users retrieved successfully",
