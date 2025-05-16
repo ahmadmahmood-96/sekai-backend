@@ -70,14 +70,16 @@ exports.getUser = async (req, res) => {
   try {
     // check if query paramters exsists
     const id = req.params.id;
-    console.log(id);
+
     if (!id) {
       return res.status(400).json({
         message: "Please provde user id",
       });
     }
 
-    const user = await User.findOne(id);
+    const user = await User.findOne({
+      _id: id
+    });
 
     if (!user) {
       return res.status(400).json({
